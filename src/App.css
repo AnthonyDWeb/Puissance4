@@ -1,176 +1,51 @@
-p{
-  padding: 0;
-  margin: 0;
+* {
+  margin: 0%;
+  padding: 0%;
 }
 
-.yellow {
-  
-    background: yellow !important
-    /* background: radial-gradient(#fbf93f, #fc4646) */
+body {
+  height: 100vh;
+  background-image: url('../src/asset/images/animated-gifs-of-fighting-game-backgrounds-19.gif');
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
 }
 
-.red {
+h1 {
+  font-size: 12vw;
+  text-shadow: 2px 1px 1px red, -2px -1px 1px orange;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+  padding: 0 15px;
+  border-radius: 35px;
+  background-color: rgba(255, 254, 254, 0.385);
+}
+
+.Jaune {
+  background: yellow !important
+}
+
+.Rouge {
   background: red !important
-  /* background: radial-gradient(black, yellow, red, red) */
 }
 
 .container {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100vh;
 }
 
-.mainContent span {
-  animation: animation 1s ease-in-out infinite alternate;
-  -moz-animation: animation 1s ease-in-out infinite alternate;
-  -webkit-animation: animation 1s ease-in-out infinite alternate;
-  -o-animation: animation 1s ease-in-out infinite alternate;
-}
 
-h1 {
-  background-color: rgba(256,256,256,.03);
-  background-image: -webkit-linear-gradient(top, #111, #0c0c0c);
-  background-image: -moz-linear-gradient(top, #111, #0c0c0c);
-  background-image: -ms-linear-gradient(top, #111, #0c0c0c);
-  background-image: -o-linear-gradient(top, #111, #0c0c0c);
-  font-size: 2em;
-  font-family: 'Amethysta', serif;
-  text-align: center;
-  line-height: 1.4em;
-  text-transform: uppercase;
-  letter-spacing: .3em;
-  white-space:nowrap;
-}
-
-span {
-  color: #000;
-  font-family: 'Caesar Dressing', cursive;
-  font-size: 5rem;
-  text-transform: lowercase;
-  vertical-align: middle;
-  letter-spacing: .2em;
-}
-
-.bottomLine{
-  text-align: center;
-  text-shadow: rgb(122, 240, 44) 1px 2px 3px;
-  font-size: 2rem;
-  color: rgb(235, 180, 180);
-  padding-bottom: 60px;
-  transform: rotateX(-0.17turn);
-  padding-right: 35px;
-  /* margin-bottom: 15px; */
-  position: relative;
-  top: -15px;
-}
-
-.musicClass {
-  width: 100%;
-  position: absolute;
-}
-
-@keyframes animation
-{
-0% {text-shadow: 0 0 20px #fefcc9,
-  10px -10px 30px #feec85,
-  -20px -20px 40px #ffae34,
-  20px -40px 50px #ec760c,
-  -20px -60px 60px #cd4606,
-  0 -80px 70px #973716,
-  10px -90px 80px #451b0e;}
-100% {text-shadow: 0 0 20px #fefcc9,
-  10px -10px 30px #fefcc9,
-  -20px -20px 40px #feec85,
-  22px -42px 60px #ffae34,
-  -22px -58px 50px #ec760c,
-  0 -82px 80px #cd4606,
-  10px -90px 80px  #973716;}
-}
-
-@-moz-keyframes animation
-{
-0% {text-shadow: 0 0 20px #fefcc9,
-  10px -10px 30px #feec85,
-  -20px -20px 40px #ffae34,
-  20px -40px 50px #ec760c,
-  -20px -60px 60px #cd4606,
-  0 -80px 70px #973716,
-  10px -90px 80px #451b0e;}
-100% {text-shadow: 0 0 20px #fefcc9,
-  10px -10px 30px #fefcc9,
-  -20px -20px 40px #feec85,
-  22px -42px 60px #ffae34,
-  -22px -58px 50px #ec760c,
-  0 -82px 80px #cd4606,
-  10px -90px 80px  #973716;}
-}
-
-@-webkit-keyframes animation
-{
-0% {text-shadow: 0 0 20px #fefcc9,
-  10px -10px 30px #feec85,
-  -20px -20px 40px #ffae34,
-  20px -40px 50px #ec760c,
-  -20px -60px 60px #cd4606,
-  0 -80px 70px #973716,
-  10px -90px 80px #451b0e;}
-100% {text-shadow: 0 0 20px #fefcc9,
-  10px -10px 30px #fefcc9,
-  -20px -20px 40px #feec85,
-  22px -42px 60px #ffae34,
-  -22px -58px 50px #ec760c,
-  0 -82px 80px #cd4606,
-  10px -90px 80px  #973716;}
-}
-
-@-o-keyframes animation
-{
-0% {text-shadow: 0 0 20px #fefcc9,
-  10px -10px 30px #feec85,
-  -20px -20px 40px #ffae34,
-  20px -40px 50px #ec760c,
-  -20px -60px 60px #cd4606,
-  0 -80px 70px #973716,
-  10px -90px 80px #451b0e;}
-100% {text-shadow: 0 0 20px #fefcc9,
-  10px -10px 30px #fefcc9,
-  -20px -20px 40px #feec85,
-  22px -42px 60px #ffae34,
-  -22px -58px 50px #ec760c,
-  0 -82px 80px #cd4606,
-  10px -90px 80px  #973716;}
-}
-
-@media (max-width: 800px) {
-  .bottomLine{
-    font-size: 1.5rem;
+@media (min-width: 700px) {
+  h1 {
+    font-size: 5vw;
   }
 }
 
-@media (max-width: 600px) {
-  .bottomLine{
-    font-size: 1.4rem;
-    top: 0;
+@media (min-width: 1200px) {
+  h1 {
+    font-size: 4vw;
   }
 }
-
-@media (max-width: 440px) {
-  span{
-    font-size: 4rem;
-  } 
-  .bottomLine{
-    font-size: 1.2rem;
-    top: 10px;
-  }
-}
-
-@media (max-width: 370px) {
-  span{
-    font-size: 3rem;
-  } 
-  .bottomLine{
-    font-size: 1rem;
-    top: 10px;
-    padding-right: 15px;
-  }
-}
-
-

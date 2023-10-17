@@ -3,306 +3,112 @@ import table from './Table.module.css'
 import Button from './Button';
 
 class Table extends React.Component {
+    power4 = {
+        col1: [0, 0, 0, 0, 0, 0],
+        col2: [0, 0, 0, 0, 0, 0],
+        col3: [0, 0, 0, 0, 0, 0],
+        col4: [0, 0, 0, 0, 0, 0],
+        col5: [0, 0, 0, 0, 0, 0],
+        col6: [0, 0, 0, 0, 0, 0],
+        col7: [0, 0, 0, 0, 0, 0],
+    };
+
     constructor() {
         super();
 
-        this.state= {
-            col1: [0,0,0,0,0,0],
-            col2: [0,0,0,0,0,0],
-            col3: [0,0,0,0,0,0],
-            col4: [0,0,0,0,0,0],
-            col5: [0,0,0,0,0,0],
-            col6: [0,0,0,0,0,0],
-            col7: [0,0,0,0,0,0],
-            player: true,   
-        }
+        this.state = { ...this.power4, player: true, };
     }
 
-    componentDidUpdate(){
-        this.columnVictoryCondition()
-        this.LineVictoryCondition()
-        this.leftDiagonalVictoryCondition()
-        this.rightDiagonalVictoryCondition()
+    componentDidUpdate() {
+        this.victoryCondition();
     }
 
     onClickColumn = (nbColumn) => {
-        for(  let i = 0; i < this.state[nbColumn].length; i++) {
-            if(this.state[nbColumn][i] === 0 ) {
+        for (let i = 0; i < this.state[nbColumn].length; i++) {
+            if (this.state[nbColumn][i] === 0) {
                 const colCopy = [...this.state[nbColumn]]
-                this.state.player ? (colCopy.splice(i, 1, "red")) : (colCopy.splice(i, 1, "yellow"))
+                this.state.player ? (colCopy.splice(i, 1, "Rouge")) : (colCopy.splice(i, 1, "Jaune"))
                 this.setState((prevState) => {
-                    return {  
+                    return {
                         ...prevState,
                         [nbColumn]: [...colCopy],
                         player: !this.state.player
-                    }   
+                    }
                 })
                 break;
             }
         }
     }
-    
-    columnVictoryCondition = () => {
-        for ( let i = 1;  i <= 7; i++  ) {
+
+    victoryCondition = () => {
+        for (let i = 1; i <= 7; i++) {
             let table = this.state["col" + i];
-            for ( let j=0; j <= table.length; j++){
-                if (table[j] === "yellow" &&  table[j+1] ===table[j] && table[j+2] === table[j] && table[j+3] === table[j]) {
-                    setTimeout(() => {
-                        alert("Player yellow won the game");
-                        this.setState(prevState => {
-                            return{
-                                ...prevState,
-                                col1: [0,0,0,0,0,0],
-                                col2: [0,0,0,0,0,0],
-                                col3: [0,0,0,0,0,0],
-                                col4: [0,0,0,0,0,0],
-                                col5: [0,0,0,0,0,0],
-                                col6: [0,0,0,0,0,0],
-                                col7: [0,0,0,0,0,0],
-                                player: true, 
-                            }
-                        })
-                    },200);
-                }
-                if (table[j] === "red" &&  table[j+1] ===table[j] && table[j+2] === table[j] && table[j+3] === table[j]) {
-                    setTimeout(() => {
-                        alert("Player red won the game");
-                        this.setState(prevState => {
-                            return{
-                                ...prevState,
-                                col1: [0,0,0,0,0,0],
-                                col2: [0,0,0,0,0,0],
-                                col3: [0,0,0,0,0,0],
-                                col4: [0,0,0,0,0,0],
-                                col5: [0,0,0,0,0,0],
-                                col6: [0,0,0,0,0,0],
-                                col7: [0,0,0,0,0,0],
-                                player: true, 
-                            }
-                        })
-                    },200);
-                }
-            }
-        }
-   }
+            for (let j = 0; j <= table.length; j++) {
+                if (table[j]) {
+                    const condition1 = (table[j + 1] === table[j] && table[j + 2] === table[j] && table[j + 3] === table[j]);
 
+                    const condition2 = (this.state["col" + (i + 1)]?.[j] === table[j] &&
+                        this.state["col" + (i + 2)]?.[j] === table[j] &&
+                        this.state["col" + (i + 3)]?.[j] === table[j]);
 
-    LineVictoryCondition = () => {
-        for ( let i = 1;  i <= 4; i++  ) {
-            for ( let j=0; j <= this.state["col" + i].length; j++){
-                if (
-                    this.state["col" + i][j] === "yellow" &&  
-                    this.state["col" + (i+1)][j] === this.state["col" + i][j] && 
-                    this.state["col" + (i+2)][j] === this.state["col" + i][j] && 
-                    this.state["col" + (i+3)][j] === this.state["col" + i][j]) {
-                    setTimeout(() => {
-                        alert("Player yellow won the game");
-                        this.setState(prevState => {
-                            return{
-                                ...prevState,
-                                col1: [0,0,0,0,0,0],
-                                col2: [0,0,0,0,0,0],
-                                col3: [0,0,0,0,0,0],
-                                col4: [0,0,0,0,0,0],
-                                col5: [0,0,0,0,0,0],
-                                col6: [0,0,0,0,0,0],
-                                col7: [0,0,0,0,0,0],
-                                player: true, 
-                            }
-                        })
-                    },200);
-                }
-                if (
-                    this.state["col" + i][j] === "red" &&  
-                    this.state["col" + (i+1)][j] === this.state["col" + i][j] && 
-                    this.state["col" + (i+2)][j] === this.state["col" + i][j] && 
-                    this.state["col" + (i+3)][j] === this.state["col" + i][j]) {
-                    setTimeout(() => {
-                        alert("Player red won the game");
-                        this.setState(prevState => {
-                            return{
-                                ...prevState,
-                                col1: [0,0,0,0,0,0],
-                                col2: [0,0,0,0,0,0],
-                                col3: [0,0,0,0,0,0],
-                                col4: [0,0,0,0,0,0],
-                                col5: [0,0,0,0,0,0],
-                                col6: [0,0,0,0,0,0],
-                                col7: [0,0,0,0,0,0],
-                                player: true, 
-                            }
-                        })
-                    },200);
-                }
-            }
-        }
-   }
+                    const condition3 = (this.state["col" + (i + 1)]?.[j + 1] === table[j] &&
+                        this.state["col" + (i + 2)]?.[j + 2] === table[j] &&
+                        this.state["col" + (i + 3)]?.[j + 3] === table[j]);
 
-    leftDiagonalVictoryCondition = () => {
-        for ( let i = 1;  i <= 4; i++  ) {
-            for ( let j=0; j <= this.state["col" + i].length; j++){
-                if (
-                    this.state["col" + i][j] === "yellow" &&  
-                    this.state["col" + (i+1)][j+1] === this.state["col" + i][j] && 
-                    this.state["col" + (i+2)][j+2] === this.state["col" + i][j] && 
-                    this.state["col" + (i+3)][j+3] === this.state["col" + i][j]) {
-                    setTimeout(() => {
-                        alert("Player yellow won the game");
-                        this.setState(prevState => {
-                            return{
-                                ...prevState,
-                                col1: [0,0,0,0,0,0],
-                                col2: [0,0,0,0,0,0],
-                                col3: [0,0,0,0,0,0],
-                                col4: [0,0,0,0,0,0],
-                                col5: [0,0,0,0,0,0],
-                                col6: [0,0,0,0,0,0],
-                                col7: [0,0,0,0,0,0],
-                                player: true, 
-                            }
-                        })
-                    },200);
-                }
-                if (
-                    this.state["col" + i][j] === "red" &&  
-                    this.state["col" + (i+1)][j+1] === this.state["col" + i][j] && 
-                    this.state["col" + (i+2)][j+2] === this.state["col" + i][j] && 
-                    this.state["col" + (i+3)][j+3] === this.state["col" + i][j]) {
-                    setTimeout(() => {
-                        alert("Player red won the game");
-                        this.setState(prevState => {
-                            return{
-                                ...prevState,
-                                col1: [0,0,0,0,0,0],
-                                col2: [0,0,0,0,0,0],
-                                col3: [0,0,0,0,0,0],
-                                col4: [0,0,0,0,0,0],
-                                col5: [0,0,0,0,0,0],
-                                col6: [0,0,0,0,0,0],
-                                col7: [0,0,0,0,0,0],
-                                player: true, 
-                            }
-                        })
-                    },200);
+                    const condition4 = (this.state["col" + (i - 1)]?.[j + 1] === table[j] &&
+                        this.state["col" + (i - 2)]?.[j + 2] === table[j] &&
+                        this.state["col" + (i - 3)]?.[j + 3] === table[j]);
+
+                    if (condition1 || condition2 || condition3 || condition4) {
+                        const dialog = document.querySelector("dialog");
+                        const message = document.getElementById("dialogMessage");
+                        message.innerText = `${table[j]} à gagné la partie !`;
+                        dialog.showModal();
+                    }
                 }
             }
         }
     }
 
-    rightDiagonalVictoryCondition = () => {
-        for ( let i = 4;  i <= 7; i++  ) {
-            for ( let j=0; j <= this.state["col" + i].length; j++){
-                if (
-                    this.state["col" + i][j] === "yellow" &&  
-                    this.state["col" + (i-1)][j+1] === this.state["col" + i][j] && 
-                    this.state["col" + (i-2)][j+2] === this.state["col" + i][j] && 
-                    this.state["col" + (i-3)][j+3] === this.state["col" + i][j]) {
-                    setTimeout(() => {
-                        alert("Player yellow won the game");
-                        this.setState(prevState => {
-                            return{
-                                ...prevState,
-                                col1: [0,0,0,0,0,0],
-                                col2: [0,0,0,0,0,0],
-                                col3: [0,0,0,0,0,0],
-                                col4: [0,0,0,0,0,0],
-                                col5: [0,0,0,0,0,0],
-                                col6: [0,0,0,0,0,0],
-                                col7: [0,0,0,0,0,0],
-                                player: true, 
-                            }
-                        })
-                    },200);
-                }
-                if (
-                    this.state["col" + i][j] === "red" &&  
-                    this.state["col" + (i-1)][j+1] === this.state["col" + i][j] && 
-                    this.state["col" + (i-2)][j+2] === this.state["col" + i][j] && 
-                    this.state["col" + (i-3)][j+3] === this.state["col" + i][j]) {
-                    setTimeout(() => {
-                        alert("Player red won the game");
-                        this.setState(prevState => {
-                            return{
-                                ...prevState,
-                                col1: [0,0,0,0,0,0],
-                                col2: [0,0,0,0,0,0],
-                                col3: [0,0,0,0,0,0],
-                                col4: [0,0,0,0,0,0],
-                                col5: [0,0,0,0,0,0],
-                                col6: [0,0,0,0,0,0],
-                                col7: [0,0,0,0,0,0],
-                                player: true, 
-                            }
-                        })
-                    },200);
-                }
-            }
-        }
-   }
+    tableRow = (lin) => {
+        const colArr = [1, 2, 3, 4, 5, 6, 7];
+        return (
+            <tr className={table.tr}>
+                {colArr.map(e => <Button onClick={() => this.onClickColumn(`col${e}`)} class={this.state[`col${e}`][lin]} />)}
+            </tr>
+        )
+    }
 
+    reset = () => {
+        this.setState({
+            ...this.power4,
+            player: true,
+        })
+    }
 
     render() {
         return (
-            <div className={table.divContainer} >
+            <>
                 <table className={table.table} >
-                    <tbody className={table.tbody} >
-                        <tr className={table.tr}>
-                            <Button onClick={()=>this.onClickColumn("col1")}  class={this.state.col1[5]}/>
-                            <Button onClick={()=>this.onClickColumn("col2")}  class={this.state.col2[5]}/>
-                            <Button onClick={()=>this.onClickColumn("col3")}  class={this.state.col3[5]}/>
-                            <Button onClick={()=>this.onClickColumn("col4")}  class={this.state.col4[5]}/>
-                            <Button onClick={()=>this.onClickColumn("col5")}  class={this.state.col5[5]}/>
-                            <Button onClick={()=>this.onClickColumn('col6')}  class={this.state.col6[5]}/>
-                            <Button onClick={()=>this.onClickColumn("col7")}  class={this.state.col7[5]}/>
-                        </tr>
-                        <tr className={table.tr}>
-                            <Button onClick={()=>this.onClickColumn("col1")}  class={this.state.col1[4]}/>
-                            <Button onClick={()=>this.onClickColumn("col2")}  class={this.state.col2[4]}/>
-                            <Button onClick={()=>this.onClickColumn("col3")}  class={this.state.col3[4]}/>
-                            <Button onClick={()=>this.onClickColumn("col4")}  class={this.state.col4[4]}/>
-                            <Button onClick={()=>this.onClickColumn("col5")}  class={this.state.col5[4]}/>
-                            <Button onClick={()=>this.onClickColumn('col6')}  class={this.state.col6[4]}/>
-                            <Button onClick={()=>this.onClickColumn("col7")}  class={this.state.col7[4]}/>
-                        </tr>
-                        <tr className={table.tr}>
-                            <Button onClick={()=>this.onClickColumn("col1")}  class={this.state.col1[3]}/>
-                            <Button onClick={()=>this.onClickColumn("col2")}  class={this.state.col2[3]}/>
-                            <Button onClick={()=>this.onClickColumn("col3")}  class={this.state.col3[3]}/>
-                            <Button onClick={()=>this.onClickColumn("col4")}  class={this.state.col4[3]}/>
-                            <Button onClick={()=>this.onClickColumn("col5")}  class={this.state.col5[3]}/>
-                            <Button onClick={()=>this.onClickColumn('col6')}  class={this.state.col6[3]}/>
-                            <Button onClick={()=>this.onClickColumn("col7")}  class={this.state.col7[3]}/>
-                        </tr>
-                        <tr className={table.tr}>
-                            <Button onClick={()=>this.onClickColumn("col1")}  class={this.state.col1[2]}/>
-                            <Button onClick={()=>this.onClickColumn("col2")}  class={this.state.col2[2]}/>
-                            <Button onClick={()=>this.onClickColumn("col3")}  class={this.state.col3[2]}/>
-                            <Button onClick={()=>this.onClickColumn("col4")}  class={this.state.col4[2]}/>
-                            <Button onClick={()=>this.onClickColumn("col5")}  class={this.state.col5[2]}/>
-                            <Button onClick={()=>this.onClickColumn('col6')}  class={this.state.col6[2]}/>
-                            <Button onClick={()=>this.onClickColumn("col7")}  class={this.state.col7[2]}/>
-                        </tr>
-                        <tr className={table.tr}>
-                            <Button onClick={()=>this.onClickColumn("col1")}  class={this.state.col1[1]}/>
-                            <Button onClick={()=>this.onClickColumn("col2")}  class={this.state.col2[1]}/>
-                            <Button onClick={()=>this.onClickColumn("col3")}  class={this.state.col3[1]}/>
-                            <Button onClick={()=>this.onClickColumn("col4")}  class={this.state.col4[1]}/>
-                            <Button onClick={()=>this.onClickColumn("col5")}  class={this.state.col5[1]}/>
-                            <Button onClick={()=>this.onClickColumn('col6')}  class={this.state.col6[1]}/>
-                            <Button onClick={()=>this.onClickColumn("col7")}  class={this.state.col7[1]}/>
-                        </tr>
-                        <tr className={table.tr}>
-                            <Button onClick={()=>this.onClickColumn("col1")}  class={this.state.col1[0]}/>
-                            <Button onClick={()=>this.onClickColumn("col2")}  class={this.state.col2[0]}/>
-                            <Button onClick={()=>this.onClickColumn("col3")}  class={this.state.col3[0]}/>
-                            <Button onClick={()=>this.onClickColumn("col4")}  class={this.state.col4[0]}/>
-                            <Button onClick={()=>this.onClickColumn("col5")}  class={this.state.col5[0]}/>
-                            <Button onClick={()=>this.onClickColumn('col6')}  class={this.state.col6[0]}/>
-                            <Button onClick={()=>this.onClickColumn("col7")}  class={this.state.col7[0]}/>
-                        </tr>
-                        </tbody>
-                </table>
-            </div>
+                    <tbody>
+                        {this.tableRow(5)}
+                        {this.tableRow(4)}
+                        {this.tableRow(3)}
+                        {this.tableRow(2)}
+                        {this.tableRow(1)}
+                        {this.tableRow(0)}
+                    </tbody>
+                    <dialog id='dialog' className={table.dialog}>
+                        <div>
+                            <p id='dialogMessage'></p>
+                            <form method="dialog">
+                                <button className={table.dialogBtn} onClick={() => this.reset()}>OK</button>
+                            </form>
+                        </div>
+                    </dialog>
+                </table >
+                <button className={table.resetBtn}>Réinitialiser</button>
+            </>
         )
     }
 }
