@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/puissance4/static/css/main.98a7f4b0.chunk.css",
+    "main.js": "/puissance4/static/js/main.2ac66495.chunk.js",
+    "main.js.map": "/puissance4/static/js/main.2ac66495.chunk.js.map",
+    "runtime-main.js": "/puissance4/static/js/runtime-main.a6c899ee.js",
+    "runtime-main.js.map": "/puissance4/static/js/runtime-main.a6c899ee.js.map",
+    "static/css/2.3e35cbb6.chunk.css": "/puissance4/static/css/2.3e35cbb6.chunk.css",
+    "static/js/2.02fa4e5d.chunk.js": "/puissance4/static/js/2.02fa4e5d.chunk.js",
+    "static/js/2.02fa4e5d.chunk.js.map": "/puissance4/static/js/2.02fa4e5d.chunk.js.map",
+    "index.html": "/puissance4/index.html",
+    "static/css/2.3e35cbb6.chunk.css.map": "/puissance4/static/css/2.3e35cbb6.chunk.css.map",
+    "static/css/main.98a7f4b0.chunk.css.map": "/puissance4/static/css/main.98a7f4b0.chunk.css.map",
+    "static/js/2.02fa4e5d.chunk.js.LICENSE.txt": "/puissance4/static/js/2.02fa4e5d.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/puissance4/static/media/animated-gifs-of-fighting-game-backgrounds-19.dbd07b12.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a6c899ee.js",
+    "static/css/2.3e35cbb6.chunk.css",
+    "static/js/2.02fa4e5d.chunk.js",
+    "static/css/main.98a7f4b0.chunk.css",
+    "static/js/main.2ac66495.chunk.js"
+  ]
+}
