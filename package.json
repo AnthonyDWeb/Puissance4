@@ -1,5 +1,5 @@
 {
-  "name": "puissancefour",
+  "name": "puissance-4",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://AnthonyDWeb.github.io/Puissance4",
@@ -9,7 +9,6 @@
     "@testing-library/user-event": "^12.8.3",
     "gh-pages": "^3.2.3",
     "react": "^17.0.2",
-    "react-audio-player": "^0.17.0",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
